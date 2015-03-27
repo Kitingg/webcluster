@@ -1,0 +1,27 @@
+upstream dynamic {
+        server 10.1.2.8:8090;
+        server 10.1.2.27:8090;
+        ip_hash;
+}
+
+
+server {
+        listen 80;
+
+        location / {
+                proxy_pass http://dynamic;
+
+                include /etc/nginx/proxy.conf;
+                client_max_body_size 20m;
+
+        }
+
+        location = /nginx-stats {
+                stub_status on;
+                access_log off;
+                allow 127.0.0.1;
+                deny all;
+        }
+}
+
+

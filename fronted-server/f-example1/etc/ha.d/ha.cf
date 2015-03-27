@@ -1,0 +1,10 @@
+logfile /var/log/ha-log #куда писать лог
+logfacility local0
+keepalive 3 #как часто опрашивать хосты, в секундах
+deadtime 10 #через какое время хост признается умершим
+initdead 15
+bcast eth0
+#udpport 694
+auto_failback on
+node f-example1
+node f-example2

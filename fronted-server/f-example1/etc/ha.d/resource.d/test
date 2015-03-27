@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+echo "Время запуска `date`" >> /tmp/ha-test.log
+
+
+/usr/local/bin/mysqlproxy.check.sh >> /tmp/ha-test.log
